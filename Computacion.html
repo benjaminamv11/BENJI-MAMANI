@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benjamin Alejandro Mamani Valdez</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Encabezado de la página -->
+        <h1>Hola, ¿Cómo estás?</h1>
+        
+        <!-- Sección de Perfil con Imagen Circular -->
+        <section class="profile-section">
+            <!-- La clase 'molded-img' asegura proporciones y 'shape-circle' recorta en círculo -->
+            <img src="avatar.png" alt="Avatar de Benjamin" class="molded-img shape-circle">
+            <div class="profile-info">
+                <h2>Soy Benjamin Alejandro Mamani Valdez</h2>
+                <p>Estudiante apasionado de Ciencias de la Computación, explorando el desarrollo de software y nuevas tecnologías.</p>
+                <ul> 
+                    <li>Tengo 18 años</li>
+                    <li>Estudiante universitario de la <a href="https://ucsp.edu.pe/" target="_blank">UCSP</a></li>
+                    <li>Carrera: <a href="https://dc.ucsp.edu.pe/pregrado/ciencia-computacion/" target="_blank">Ciencias de la Computación</a></li>
+                    <li>Me gusta jugar videojuegos, jugar ajedrez, escuchar música y tocar el teclado</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Sección de Amigos en Grid -->
+        <section>
+            <h2>Amigos míos :v</h2>
+            <div class="friends-grid">
+                <div class="friend-card"><a href="https://ackyul.github.io" target="_blank">El mushasho</a></div>
+                <div class="friend-card">Thiaguito</div>
+                <div class="friend-card">Samu</div>
+                <div class="friend-card">Gabo</div>
+                <div class="friend-card">El Sosa</div>
+                <div class="friend-card">Alejandro</div>
+                <div class="friend-card">J.F.M</div>
+            </div>
+        </section>
+
+        <!-- Sección Educativa: Galería de Recorte y Moldeado de Imágenes -->
+        <section class="gallery-section">
+            <h2>Guía de Moldeado y Recorte de Imágenes (CSS)</h2>
+            <p>Aquí tienes ejemplos reales de cómo moldear y recortar imágenes usando CSS. Todas estas técnicas utilizan la propiedad <code>object-fit: cover</code> para evitar que la imagen se estire o se deforme al cambiar su contenedor:</p>
+            
+            <div class="gallery-grid">
+                <!-- 1. Círculo Perfecto -->
+                <div class="gallery-card">
+                    <img src="hobbies.png" alt="Ejemplo Círculo" class="molded-img shape-circle">
+                    <h3>Círculo Perfecto</h3>
+                    <p>Ideal para fotos de perfil y avatares.</p>
+                    <code>border-radius: 50%;</code>
+                </div>
+
+                <!-- 2. Forma de Hoja -->
+                <div class="gallery-card">
+                    <img src="hobbies.png" alt="Ejemplo Hoja" class="molded-img shape-leaf">
+                    <h3>Forma de Hoja</h3>
+                    <p>Esquinas opuestas redondeadas de forma asimétrica.</p>
+                    <code>border-radius: 50px 0 50px 0;</code>
+                </div>
+
+                <!-- 3. Hexágono -->
+                <div class="gallery-card">
+                    <img src="hobbies.png" alt="Ejemplo Hexágono" class="molded-img shape-hexagon">
+                    <h3>Hexágono (clip-path)</h3>
+                    <p>Recorte poligonal de 6 vértices simétricos.</p>
+                    <code>clip-path: polygon(...);</code>
+                </div>
+
+                <!-- 4. Escudo / Emblema -->
+                <div class="gallery-card">
+                    <img src="hobbies.png" alt="Ejemplo Escudo" class="molded-img shape-shield">
+                    <h3>Escudo (clip-path)</h3>
+                    <p>Forma de emblema tecnológico o heráldico.</p>
+                    <code>clip-path: polygon(...);</code>
+                </div>
+
+                <!-- 5. Estrella -->
+                <div class="gallery-card">
+                    <img src="hobbies.png" alt="Ejemplo Estrella" class="molded-img shape-star">
+                    <h3>Estrella (clip-path)</h3>
+                    <p>Ideal para insignias, destaques o valoraciones.</p>
+                    <code>clip-path: polygon(...);</code>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
