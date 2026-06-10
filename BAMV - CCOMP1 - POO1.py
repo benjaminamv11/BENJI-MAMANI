@@ -11,13 +11,10 @@ class Personaje:
         self.lista_hab = []
     def aprender_habilidad(self, nombre, puntos_danio):
         nueva_hab = Habilidad(nombre, puntos_danio)
-        self.lista_hab.append(nueva_hab)
-    def atacar_con_todo(self):
-        for i in self.lista_hab:
-            print(Habilidad.activar)
+        self.lista_hab.append(nueva_hab)
     def mostrar_arbol_hab(self):
         for i in self.lista_hab:
-            print()
+            print(i)
 
 Heroe = Personaje("Mago Merlín")
 Heroe.aprender_habilidad("Bola de fuego", 50)
