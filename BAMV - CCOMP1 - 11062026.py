@@ -22,8 +22,8 @@ class Tablero:
         self.numero_minas = 5
     def gen_tablero(self):
         casilla = Casilla()
-        for j in range(self.cant_columnas):
-            for i in range(self.cant_filas):
+        for i in range(self.cant_filas):
+            for j in range(self.cant_columnas):
                 self.fila.append(casilla)
             self.casillas.append(self.fila)
             self.fila = []
