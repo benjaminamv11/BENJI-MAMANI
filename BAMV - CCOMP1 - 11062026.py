@@ -3,8 +3,7 @@ import random
 class Casilla:
     def __init__(self):
         self.oculta = "#"
-        self.marcadas = "F"
-        self.mina = "+"
+        self.marcadas = "F"
         self.casilla_descubierta = 0
         self.mina_descubierta = "*"
         self.tiene_mina = False
