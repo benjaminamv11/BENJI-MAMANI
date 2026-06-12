@@ -3,15 +3,10 @@ import random
 class Casilla:
     def __init__(self):
         self.oculta = "#"
-        self.marcadas = "F"
+        self.marcadas = "F"
         self.casilla_descubierta = 0
         self.mina_descubierta = "*"
         self.tiene_mina = False
-    def si_mina(self):
-        if self.tiene_mina == True:
-            return self.mina
-        else:
-            return self.oculta
 class Tablero:
     def __init__(self, n_filas, n_columnas):
         self.casillas = []
@@ -26,7 +21,7 @@ class Tablero:
                 self.fila.append(casilla)
             self.casillas.append(self.fila)
             self.fila = []
-        return self.casillas
+        print(self.casillas)
     def generar_minas(self):
         minas_colocadas = 0
         while minas_colocadas > self.numero_minas:
@@ -40,7 +35,7 @@ class Tablero:
         for i in range(fila - 1, fila + 2):
             for j in range(columna - 1, columna + 2):
                 if self.casillas[i][j] != self.casillas[fila][columna]:
-                    if self.casillas[i][j] == casilla.mina:
+                    if self.casillas[i][j] == False:
                         self.casillas[fila][columna] = casilla.casilla_descubierta
                         self.casillas[fila][columna] += 1
         return self.casillas
