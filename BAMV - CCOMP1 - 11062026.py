@@ -7,11 +7,6 @@ class Casilla:
         self.casilla_descubierta = 0
         self.mina_descubierta = "*"
         self.tiene_mina = False
-    def si_mina(self):
-        if self.tiene_mina == True:
-            return self.mina
-        else:
-            return self.oculta
 class Tablero:
     def __init__(self, n_filas, n_columnas):
         self.casillas = []
