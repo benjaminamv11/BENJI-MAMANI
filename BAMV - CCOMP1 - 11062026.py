@@ -21,7 +21,7 @@ class Tablero:
                 self.fila.append(casilla)
             self.casillas.append(self.fila)
             self.fila = []
-        print(self.casillas)
+        return self.casillas
     def generar_minas(self):
         minas_colocadas = 0
         while minas_colocadas > self.numero_minas:
@@ -51,6 +51,13 @@ class Tablero:
         else:
             self.casillas[fila][columna] = casilla.casilla_descubierta
             self.caso_c_descub(fila, columna)
+    def mostrar_tablero(self):
+        casilla = Casilla()
+        for i in range(len(self.cant_filas)):
+            for j in range(len(self.cant_columnas)):
+                self.casillas[i][j] = casilla
+                casilla = casilla.oculta
+        print(self.casillas)
 generacion_tablero = True
 
 print("Bienvenido al juego de BUSCAMINAS en Pyhton\nPara generar el tablero necesitamos...")
