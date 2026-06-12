@@ -42,8 +42,8 @@ class Tablero:
             for j in range(columna - 1, columna + 2):
                 if self.casillas[i][j] != self.casillas[fila][columna]:
                     if self.casillas[i][j] == casilla.mina:
-                        self.casillas[i][j] = casilla.casilla_descubierta
-                        self.casillas[i][j] += 1
+                        self.casillas[fila][columna] = casilla.casilla_descubierta
+                        self.casillas[fila][columna] += 1
         return self.casillas
     def descubrir_casilla(self):
         stop = False
