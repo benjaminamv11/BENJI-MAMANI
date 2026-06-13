@@ -34,17 +34,16 @@ class Tablero:
         casilla = Casilla()
         for i in range(fila - 1, fila + 2):
             for j in range(columna - 1, columna + 2):
+                self.casillas[i][j] = casilla
                 if self.casillas[i][j] != self.casillas[fila][columna]:
-                    if self.casillas[i][j] == False:
-                        self.casillas[fila][columna] = casilla.casilla_descubierta
-                        self.casillas[fila][columna] += 1
-        return self.casillas
+                    if casilla.tiene_mina == True:
+                        self.casillas[fila][columna].casilla_descubierta += 1
     def descubrir_casilla(self):
         stop = False
         casilla = Casilla()
         fila = int(input("> "))
         columna = int(input("> "))
-        if self.casillas[fila][columna] == casilla.mina:
+        if self.casillas[fila][columna] == casilla.tiene_mina:
             self.casillas[fila][columna] = casilla.mina_descubierta
             stop = True
             return stop
@@ -53,11 +52,16 @@ class Tablero:
             self.caso_c_descub(fila, columna)
     def mostrar_tablero(self):
         casilla = Casilla()
-        for i in range(len(self.cant_filas)):
-            for j in range(len(self.cant_columnas)):
-                self.casillas[i][j] = casilla
-                casilla = casilla.oculta
-        print(self.casillas)
+        print(" ",end="")
+        for x in range(self.cant_columnas):
+            print(f" {x}",end="")
+        print()
+        for i in range(self.cant_filas):
+            print(i, end=" ")
+            for j in range(self.cant_columnas):
+                print(casilla.oculta, end=" ")
+            print()
+
 generacion_tablero = True
 
 print("Bienvenido al juego de BUSCAMINAS en Pyhton\nPara generar el tablero necesitamos...")
@@ -76,5 +80,10 @@ run = True
 tablero1 = Tablero(n_filas, n_columnas)
 tablero1.gen_tablero()
 tablero1.generar_minas()
+tablero1.mostrar_tablero()
+
 while run:
     tablero1.descubrir_casilla()
+    if tablero1.descubrir_casilla():
+        run = False
+        print("Fin del Juego...")
