@@ -61,6 +61,12 @@ class Tablero:
             for j in range(self.cant_columnas):
                 print(casilla.oculta, end=" ")
             print()
+    def marcar_casilla(self):
+        casilla = Casilla()
+        fila = int(input("> "))
+        columna = int(input("> "))
+        self.casillas[fila][columna] = casilla.marcadas
+        
 
 generacion_tablero = True
 
