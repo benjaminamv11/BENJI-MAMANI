@@ -51,6 +51,7 @@ class Tablero:
         else:
             self.casillas[fila][columna] = casilla.casilla_descubierta
             self.caso_c_descub(fila, columna)
+            self.casillas[fila][columna].estado_oculto = True
     def mostrar_tablero(self):
         casilla = Casilla()
         print(" ",end="")
