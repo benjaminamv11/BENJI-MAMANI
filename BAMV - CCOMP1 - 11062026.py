@@ -7,7 +7,7 @@ class Casilla:
         self.casilla_descubierta = 0
         self.mina_descubierta = "*"
         self.tiene_mina = False
-        self.estado_oculto = False
+        self.estado_oculto = True
 class Tablero:
     def __init__(self, n_filas, n_columnas):
         self.casillas = []
@@ -28,34 +28,35 @@ class Tablero:
         while minas_colocadas > self.numero_minas:
             fila = random.randint (0, self.cant_filas - 1)
             columna = random.randint (0, self.cant_columnas - 1)
-            if not self.casillas[fila][columna].tiene_mina:
-                self.casillas[fila][columna].tiene_mina = True
+            if not (self.casillas[fila][columna]).tiene_mina:
+                (self.casillas[fila][columna]).tiene_mina = True
                 minas_colocadas += 1
     def caso_c_descub(self, fila, columna):
         for i in range(fila - 1, fila + 2):
             for j in range(columna - 1, columna + 2):
-                if i >= 0 and j >= 0:
+                if (i >= 0 and j >= 0) and (i < self.cant_filas and j < self.cant_columnas):
                     if i != fila and j != columna:
-                        if self.casillas[i][j].tiene_mina == True:
+                        if (self.casillas[i][j]).tiene_mina == True:
                             self.casillas[fila][columna].casilla_descubierta += 1
     def marcar_casilla(self):
         casilla = Casilla()
         fila = int(input("> "))
         columna = int(input("> "))
-        self.casillas[fila][columna].estado_oculto = True
-        self.casillas[fila][columna] = casilla.marcadas    
+        self.casillas[fila][columna].estado_oculto = False
+        self.casillas[fila][columna] = casilla.marcadas 
     def descubrir_casilla(self):
         stop = False
         casilla = Casilla()
         print("Ingrese las coordenadas para la casilla seleccionada")
         fila = int(input("> "))
         columna = int(input("> "))
-        if self.casillas[fila][columna].tiene_mina == True:
+        if (self.casillas[fila][columna]).tiene_mina == True:
             self.casillas[fila][columna] = casilla.mina_descubierta
+            (self.casillas[fila][columna]).estado_oculto = False
             stop = True
             return stop
         else:
-            self.casillas[fila][columna].estado_oculto = True
+            (self.casillas[fila][columna]).estado_oculto = False
             self.caso_c_descub(fila, columna)
             return stop
     def mostrar_tablero(self):
@@ -67,7 +68,7 @@ class Tablero:
         for i in range(self.cant_filas):
             print(i, end=" ")
             for j in range(self.cant_columnas):
-                if self.casillas[i][j].estado_oculto == False:
+                if (self.casillas[i][j]).estado_oculto == True:
                     print(casilla.oculta, end=" ")
             print()
 
