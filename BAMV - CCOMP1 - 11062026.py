@@ -7,6 +7,7 @@ class Casilla:
         self.casilla_descubierta = 0
         self.mina_descubierta = "*"
         self.tiene_mina = False
+        self.estado_oculto = False
 class Tablero:
     def __init__(self, n_filas, n_columnas):
         self.casillas = []
@@ -59,7 +60,10 @@ class Tablero:
         for i in range(self.cant_filas):
             print(i, end=" ")
             for j in range(self.cant_columnas):
-                print(casilla.oculta, end=" ")
+                if self.casillas[i][j].estado_oculto == False:
+                    print(casilla.oculta, end=" ")
+                else:
+                    print(casilla.casilla_descubierta, end=" ")
             print()
     def marcar_casilla(self):
         casilla = Casilla()
