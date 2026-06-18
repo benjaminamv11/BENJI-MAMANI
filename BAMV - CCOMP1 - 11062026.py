@@ -15,7 +15,7 @@ class Tablero:
         self.fila = []
         self.cant_filas = n_filas
         self.cant_columnas = n_columnas
-        self.numero_minas = 5
+        self.numero_minas = random.randint(5, (self.cant_filas - 1)*(self.cant_columnas - 1))
     def gen_tablero(self):
         for i in range(self.cant_filas):
             for j in range(self.cant_columnas):
@@ -105,6 +105,7 @@ run = True
 tablero1 = Tablero(n_filas, n_columnas)
 tablero1.gen_tablero()
 tablero1.generar_minas()
+print(f"Cantidad de minas: {tablero1.numero_minas}")
 
 casillas_descubiertas = 0
 total = n_filas * n_columnas
