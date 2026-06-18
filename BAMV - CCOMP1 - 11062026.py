@@ -17,15 +17,14 @@ class Tablero:
         self.cant_columnas = n_columnas
         self.numero_minas = 5
     def gen_tablero(self):
-        casilla = Casilla()
         for i in range(self.cant_filas):
             for j in range(self.cant_columnas):
-                self.fila.append(casilla)
+                self.fila.append(Casilla())
             self.casillas.append(self.fila)
             self.fila = []
     def generar_minas(self):
         minas_colocadas = 0
-        while minas_colocadas > self.numero_minas:
+        while minas_colocadas < self.numero_minas:
             fila = random.randint (0, self.cant_filas - 1)
             columna = random.randint (0, self.cant_columnas - 1)
             if not (self.casillas[fila][columna]).tiene_mina:
@@ -38,25 +37,21 @@ class Tablero:
                     if self.casillas[i][j] != self.casillas[fila][columna]:
                         if self.casillas[i][j].tiene_mina == True:
                             self.casillas[fila][columna].casilla_descubierta += 1
-
     def marcar_casilla(self):
-        casilla = Casilla()
         fila = int(input("> "))
         columna = int(input("> "))
-        self.casillas[fila][columna].estado_oculto = False
-        self.casillas[fila][columna] = casilla.marcadas
+        self.casillas[fila][columna].si_marcado = True
     def descubrir_casilla(self):
         print("Ingrese las coordenadas para la casilla seleccionada")
-        stop = False
         fila = int(input("> "))
         columna = int(input("> "))
-        if self.casillas[fila][columna].tiene_mina == True:
+        if self.casillas[fila][columna].tiene_mina:
             self.casillas[fila][columna].estado_oculto = False
-            stop = True
-            return stop
-        elif self.casillas[fila][columna].tiene_mina == False:
+            return True
+        else:
             self.casillas[fila][columna].estado_oculto = False
             self.caso_c_descub(fila, columna)
+            return False
     def mostrar_tablero(self):
         print(" ",end="")
         for x in range(self.cant_columnas):
@@ -66,10 +61,12 @@ class Tablero:
             print(i, end=" ")
             for j in range(self.cant_columnas):
                 valor = self.casillas[i][j]
-                if valor.estado_oculto == True and self.casillas[i][j].si_marcado == False:
-                    print(valor.oculta, end=" ")
-                elif valor.estado_oculto == True and self.casillas[i][j].si_marcado == True:
+                if valor.estado_oculto == False:
+                    print(valor.casilla_descubierta, end=" ")
+                elif self.casillas[i][j].si_marcado:
                     print(valor.marcadas, end=" ")
+                else:
+                    print(valor.oculta, end=" ")
             print()
 
 generacion_tablero = True
@@ -96,19 +93,19 @@ opcion = input("""Ingrese la acción que desea realizar:
 "d": Para descubrir la casilla
 "m": Para marcar una casilla 
 > """)
-
+casillas_descubiertas = 0
+total = n_filas * n_columnas
 while run:
     if opcion == "d":
+        casillas_descubiertas += 1
         condicion = tablero1.descubrir_casilla()
         if condicion:
             run = False
             print("Fin del Juego...")
     elif opcion == "m":
         tablero1.marcar_casilla()
-        tablero1.mostrar_tablero()
     tablero1.mostrar_tablero()
     opcion = input("""Ingrese la acción que desea realizar:
 "d": Para descubrir la casilla
 "m": Para marcar una casilla 
 > """)
-    tablero1.mostrar_tablero()
