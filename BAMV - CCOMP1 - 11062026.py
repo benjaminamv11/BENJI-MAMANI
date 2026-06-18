@@ -68,6 +68,24 @@ class Tablero:
                 else:
                     print(valor.oculta, end=" ")
             print()
+    def derrota(self):
+        print(" ", end="")
+        for x in range(self.cant_columnas):
+            print(f" {x}",end="")
+        print()
+        for i in range(self.cant_filas):
+            print(i, end=" ")
+            for j in range(self.cant_columnas):
+                valor = self.casillas[i][j]
+                if valor.tiene_mina:
+                    print(valor.mina_descubierta, end=" ")
+                elif valor.si_marcado:
+                    print(valor.marcadas, end=" ")
+                elif valor.estado_oculto == False:
+                    print(valor.casilla_descubierta, end=" ")
+                else:
+                    print(valor.oculta, end=" ")
+            print()
 
 generacion_tablero = True
 
@@ -87,25 +105,22 @@ run = True
 tablero1 = Tablero(n_filas, n_columnas)
 tablero1.gen_tablero()
 tablero1.generar_minas()
-tablero1.mostrar_tablero()
 
-opcion = input("""Ingrese la acción que desea realizar:
+casillas_descubiertas = 0
+total = n_filas * n_columnas
+
+while run:
+    tablero1.mostrar_tablero()
+    opcion = input("""Ingrese la acción que desea realizar:
 "d": Para descubrir la casilla
 "m": Para marcar una casilla 
 > """)
-casillas_descubiertas = 0
-total = n_filas * n_columnas
-while run:
     if opcion == "d":
         casillas_descubiertas += 1
         condicion = tablero1.descubrir_casilla()
         if condicion:
             run = False
             print("Fin del Juego...")
+            tablero1.derrota()
     elif opcion == "m":
         tablero1.marcar_casilla()
-    tablero1.mostrar_tablero()
-    opcion = input("""Ingrese la acción que desea realizar:
-"d": Para descubrir la casilla
-"m": Para marcar una casilla 
-> """)
