@@ -123,5 +123,9 @@ while run:
             run = False
             print("Fin del Juego...")
             tablero1.derrota()
+        casillas_descubiertas += 1
     elif opcion == "m":
         tablero1.marcar_casilla()
+    if casillas_descubiertas == total - tablero1.numero_minas:
+        print("Tenemos un ganador!!!!!!")
+        run = False
